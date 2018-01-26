@@ -7,6 +7,9 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
+import glob
+from nltk import word_tokenize
+
 
 def create_pipelines():
     bow_nb = Pipeline(
@@ -45,10 +48,21 @@ def create_pipelines():
 
 
 #nltk.download('movie_reviews')
-documents = [([w.lower() for w in movie_reviews.words(fileid)], category)
-              for category in movie_reviews.categories()
-              for fileid in movie_reviews.fileids(category)]
+# documents = [([w.lower() for w in movie_reviews.words(fileid)], category)
+#               for category in movie_reviews.categories()
+#               for fileid in movie_reviews.fileids(category)]
 
+
+def get_documents(category):
+    documents = []
+    for file in glob.glob("{}/*.txt".format(category)):
+        words = word_tokenize(open(file, "r").read())
+        documents.append((words,category))
+    return documents
+
+
+documents = get_documents("suicide")
+documents += get_documents("nosuicide")[:len(documents)]
 
 X = [d[0] for d in documents]
 y = [d[1] for d in documents]
