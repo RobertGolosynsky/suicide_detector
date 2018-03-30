@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Suicidal tendencies detector</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+<div class="jumbotron vertical-center">
+
+    <div class="container text-center">
+        <h4 class="h2class">Suicidal tendencies detector</h4>
+        <p class="note">
+            Check your favorite song and find out whether it contains suicidal inclinations
+        </p>
+        <input class="form-control" placeholder="Artist" type="text" id="artist"/>
+        <input class="form-control" placeholder="Song" type="text" id="song"/>
+        <select class="selectpicker form-control" id="model-select" data-width="auto"></select>
+        <input class="btn btn-primary form-control" type="button" id="go" value="Go"/>
+        <div id="res">
+
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
