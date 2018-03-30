@@ -37,6 +37,7 @@ folder_regex_group_number = 1
 categories = sorted([suicidal_category_name, not_suicidal_category_name])
 
 diagrams_folder = "diagrams"
+font_file = "fonts/Roboto-Bold.ttf"
 
 
 

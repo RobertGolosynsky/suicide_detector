@@ -1,7 +1,7 @@
 from config import *
 from api_helpers import get_lyrics
 from model_persistance_helper import best_model
-from test_draw import TextDraw
+from text_draw import TextDraw
 
 
 def ngrams(input_list, n):
@@ -13,7 +13,7 @@ song = "Nirvana-smells"
 text = get_lyrics(*song.split("-"))
 lines = text.splitlines()
 lines = [line for line in lines if len(line) > 0]
-td = TextDraw("Roboto-Bold.ttf", 15)
+td = TextDraw(font_file, 15)
 lines_splited = []
 
 for line in lines:
