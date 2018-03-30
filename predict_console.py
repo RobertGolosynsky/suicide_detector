@@ -1,6 +1,6 @@
 from api_helpers import get_lyrics
 from model_persistance_helper import best_model
-
+from data_helpers import tokenize_and_process, pos_tagger
 model = best_model()
 if not model:
     print("No prediction model checkpoint found. Aborting.")
@@ -19,6 +19,6 @@ while True:
         print("Lyrics: ")
         print(lyrics)
         print()
-        print(model.predict([lyrics]))
+        print(model.predict([tokenize_and_process(lyrics, pos_tagger)]))
     else:
         print("Song not found")

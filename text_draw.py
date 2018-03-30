@@ -1,6 +1,5 @@
-import os
 from PIL import Image, ImageFont, ImageDraw, ImageEnhance
-
+from file_helpers import silent_remove
 
 class TextDraw:
 
@@ -23,7 +22,7 @@ class TextDraw:
         self._new_line = True
 
     def save(self, file_name):
-        os.remove(file_name)
+        silent_remove(file_name)
         img = Image.new('RGB', (100, 100), color=(73, 109, 137))
         draw = ImageDraw.Draw(img)
         vertical_margin = 20
@@ -45,7 +44,7 @@ class TextDraw:
 
         max_width += 2*horizontal_margin
         h += 2*vertical_margin
-        img = Image.new('RGB', (max_width, h), color=(73, 109, 137))
+        img = Image.new('RGB', (max_width, h), color=(255, 255, 255))
         draw = ImageDraw.Draw(img)
 
         w, h = 0, vertical_margin

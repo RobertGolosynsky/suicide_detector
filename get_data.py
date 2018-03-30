@@ -29,7 +29,7 @@ def save_songs(artists, location):
             if lyric:
                 filename = os.path.join(location, filename)
                 print("Saving to a file {}".format(filename))
-                save_text(filename, song + '\n' + lyric)
+                save_text(filename, lyric)
 
 
 not_suicidal_as_popular_in_usa = False

@@ -1,7 +1,11 @@
 import json
 from flask import Flask, send_from_directory, request, jsonify
+
+import draw_text
 from api_helpers import get_lyrics
 from config import categories
+from data_helpers import tokenize_and_process, pos_tagger
+from draw_text import create_text_diagram
 from model_persistance_helper import get_models_info, find_model
 
 app = Flask(__name__)
@@ -33,10 +37,11 @@ def analyze():
         return jsonify(res)
 
     lyrics = get_lyrics(artist, song)
+
     if lyrics:
             model = find_model(model_name, model_date)
             if model:
-                probabilities = model.predict_proba([lyrics])[0]
+                probabilities = model.predict_proba([tokenize_and_process(lyrics, pos_tagger)])[0]
                 probabilities_with_labels = []
                 for i, proba in enumerate(probabilities):
                     probabilities_with_labels.append(
@@ -48,6 +53,8 @@ def analyze():
                 res["probabilities"] = probabilities_with_labels
                 res["code"] = 0
                 res["text"] = "OK"
+
+                res["diagram_url"] = "image/" + create_text_diagram(model, lyrics, song)
             else:
                 res["text"] = "Model not found: {}".format(json.dumps(request.args))
     else:
@@ -59,6 +66,11 @@ def analyze():
 @app.route('/js/<path:path>')
 def send_js(path):
     return send_from_directory('js', path)
+
+
+@app.route('/image/<path:path>')
+def send_image(path):
+    return send_from_directory('image', path)
 
 
 @app.route('/css/<path:path>')

@@ -5,10 +5,11 @@ import dill
 import re
 
 from config import *
+from file_helpers import check_create_folder
+
 
 def save_model(pipe, pipe_name):
-    if not os.path.exists(current_checkpoint_directory):
-        os.makedirs(current_checkpoint_directory)
+    check_create_folder(current_checkpoint_directory)
     pipe_file = os.path.join(current_checkpoint_directory, "{}.{}".format(pipe_name, model_file_extension))
     pickle._dump(pipe, open(pipe_file, "wb"))
 
@@ -24,7 +25,6 @@ def get_models_info():
         for model_file in d[2]:
             if model_file.endswith(model_file_extension):
                 model_name = model_file[:-(len(model_file_extension)+1)]
-
                 for report_file in d[2]:
                     if "{}.{}".format(model_name, report_file_extension) == report_file:
                         for line in open(os.path.join(d[0], report_file)).readlines():
@@ -36,7 +36,6 @@ def get_models_info():
                                     "model_date": d[3],
                                     "model_score": f1_score
                                 })
-
     return models_info
 
 

@@ -43,6 +43,8 @@ $(document).ready(function() {
                     verdict_text = data.probabilities[max].label+" ("+(data.probabilities[max].probability*100).toFixed(2)+"%)"
                     result_text = pre_text+" "+verdict_text
                     $("#res").html("<div class=\"alert alert-dark\" role=\"alert\" id=\"res-alert\">"+result_text+" </div>");
+                    time= new Date();
+                    $("#res").append("<img src=\""+data.diagram_url+"?dummy="+time+"\"/>");
                 }
                 else{
                     $("#warn-alert").alert('close')

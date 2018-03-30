@@ -9,7 +9,7 @@ from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 
-from data_helpers import get_documents, save_plots
+from data_helpers import get_documents, save_plots, pos_tagger
 from model_persistance_helper import save_model
 from config import *
 
@@ -21,7 +21,7 @@ nltk.download('punkt')
 
 def create_pipelines():
     pipes = []
-    for ngram in range(5, 10):
+    for ngram in range(1, 6):
         bow_nb = Pipeline(
                 [
                     ("bow", CountVectorizer(ngram_range=(1, ngram), lowercase=False, analyzer='word', tokenizer=lambda x:x)),
@@ -63,7 +63,7 @@ should_save_plots = True
 
 docs = []
 for category in categories:
-    docs.append(get_documents(category))
+    docs.append(get_documents(category, pos_tagger))
 
 l = min(len(d) for d in docs)
 documents = []

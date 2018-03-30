@@ -26,7 +26,7 @@ not_suicidal_artists_list_file_path = join(dataset_root, not_suicidal_artists_li
 # model extension without '.'
 model_file_extension = "model"
 report_file_extension = "report"
-
+diagram_file_extension = "png"
 model_checkpoints_root = "checkpoints"
 
 f1_score_regex = r".+avg / total\s+[+-]?([0-9]*[.])?[0-9]+\s+[+-]?([0-9]*[.])?[0-9]+\s+([+-]?([0-9]*[.])?[0-9]+)" #$3
@@ -35,8 +35,7 @@ folder_regex = r".+checkpoint\s(.+)" #$1
 folder_regex_group_number = 1
 
 categories = sorted([suicidal_category_name, not_suicidal_category_name])
-
-diagrams_folder = "diagrams"
+diagrams_folder = "image"
 font_file = "fonts/Roboto-Bold.ttf"
 
 
