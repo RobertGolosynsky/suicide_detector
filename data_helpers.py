@@ -29,7 +29,7 @@ def get_documents(category, words_processor):
     folder_path = not_suicidal_folder_path if category == not_suicidal_category_name else suicidal_folder_path
     for file in glob.glob(os.path.join(folder_path, "*.txt".format(folder_path))):
         line = open(file, "r", encoding="utf-8").read()
-        documents.append((tokenize_and_process(line, words_processor), category))
+        documents.append((tokenize_and_process(line, words_processor), category, file))
     return documents
 
 

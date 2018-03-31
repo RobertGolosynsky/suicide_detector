@@ -70,7 +70,7 @@ documents = []
 for d in docs:
     documents += d[:l]
 
-X, y = zip(*documents)
+X, y, _ = zip(*documents)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 

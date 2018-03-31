@@ -20,10 +20,6 @@ def plot_confusion_matrix(y_test,
     title = 'Normalized confusion matrix ' + pipe_name
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-        print("Normalized confusion matrix")
-    else:
-        print('Confusion matrix, without normalization')
-
 
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)

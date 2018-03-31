@@ -7,6 +7,7 @@ import os
 
 from config import *
 from data_helpers import save_text
+from remove_similar_songs import remove_similar_songs
 
 
 def as_filename(str):
@@ -45,7 +46,7 @@ if not_suicidal_as_popular_in_usa:
 else:
     artists = open(not_suicidal_artists_list_file_path, "r").read().split("\n")
 save_songs(artists, not_suicidal_folder_path)
-
+remove_similar_songs()
 
 
 

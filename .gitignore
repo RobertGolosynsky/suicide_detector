@@ -103,5 +103,5 @@ ENV/
 checkpoints/*
 dataset/not suicidal
 dataset/suicidal
-diagrams/*
+image/*
 
