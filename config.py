@@ -17,10 +17,12 @@ not_suicidal_folder_path = join(dataset_root, not_suicidal_folder_name)
 
 suicidal_artists_list_file_name = "suicidal_artists.txt"
 suicidal_bands_list_file_name = "suicidal_bands.txt"
+depressing_bands_list_file_name = "depressing_bands.txt"
 not_suicidal_artists_list_file_name = "not_suicidal_artists.txt"
 
 suicidal_artists_list_file_path = join(dataset_root, suicidal_artists_list_file_name)
 suicidal_bands_list_file_path = join(dataset_root, suicidal_bands_list_file_name)
+depressing_bands_list_file_path = join(dataset_root, depressing_bands_list_file_name)
 not_suicidal_artists_list_file_path = join(dataset_root, not_suicidal_artists_list_file_name)
 
 # model extension without '.'
