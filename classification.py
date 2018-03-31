@@ -23,24 +23,24 @@ nltk.download('punkt')
 
 def create_pipelines():
     pipes = []
-    for ngram in range(1, 6):
+    for ngram in range(1, 3):
         bow_nb = Pipeline(
                 [
-                    ("bow", CountVectorizer(ngram_range=(1, ngram), lowercase=False, analyzer='word', tokenizer=default_tokenizer_and_pos_tagger)),
+                    ("bow", CountVectorizer(ngram_range=(1, ngram), lowercase=True, analyzer='word', tokenizer=default_tokenizer_and_pos_tagger)),
                     ("nb", MultinomialNB())
                 ]
             )
 
         tfidf_nb = Pipeline(
                 [
-                    ("tf_idf", TfidfVectorizer(ngram_range=(1, ngram), lowercase=False, analyzer='word', tokenizer=default_tokenizer_and_pos_tagger,
+                    ("tf_idf", TfidfVectorizer(ngram_range=(1, ngram), lowercase=True, analyzer='word', tokenizer=default_tokenizer_and_pos_tagger,
                                                use_idf=True)),
                     ("nb", MultinomialNB())
                 ]
             )
         tfidf_svm = Pipeline(
                 [
-                    ("tf_idf", TfidfVectorizer(ngram_range=(1, ngram), lowercase=False, analyzer='word', tokenizer=default_tokenizer_and_pos_tagger,
+                    ("tf_idf", TfidfVectorizer(ngram_range=(1, ngram), lowercase=True, analyzer='word', tokenizer=default_tokenizer_and_pos_tagger,
                                                use_idf=True)),
                     ("svm", SVC(kernel="linear", probability=True))
                 ]
@@ -48,7 +48,7 @@ def create_pipelines():
 
         tfidf_nn = Pipeline(
                 [
-                    ("tf_idf", TfidfVectorizer(ngram_range=(1, ngram), lowercase=False, analyzer='word', tokenizer=default_tokenizer_and_pos_tagger,
+                    ("tf_idf", TfidfVectorizer(ngram_range=(1, ngram), lowercase=True, analyzer='word', tokenizer=default_tokenizer_and_pos_tagger,
                                                use_idf=True)),
                     ("mlp", MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(20), random_state=1))
                 ]

@@ -60,7 +60,6 @@ def _tokenize_and_process(line, words_processor):
     return words_processor(word_tokenize(line))
 
 def default_tokenizer_and_pos_tagger(line):
-    line = line.lower()
     return _pos_tagger(word_tokenize(line))
 
 

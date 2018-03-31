@@ -4,6 +4,8 @@ import datetime
 
 import os
 
+last_key = "88208b241c65e6ae5e86acdb1b81996f"
+
 dataset_root = "dataset"
 
 

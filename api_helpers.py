@@ -1,11 +1,11 @@
 import traceback
-
+from config import last_key
 import requests
 from bs4 import BeautifulSoup
 import urllib.parse
 from difflib import SequenceMatcher
 
-last_key = "88208b241c65e6ae5e86acdb1b81996f"
+
 last_fm_songs = "http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist={}&api_key={}&format=json&limit=300"
 last_fm_popular_artists = "http://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country={}&api_key={}&format=json"
 song_info_url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyric?artist={}&song={}"

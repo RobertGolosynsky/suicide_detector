@@ -15,9 +15,9 @@ def remove_similar_songs():
     corpus = []
     for cat in categories:
         for doc in get_documents(cat):
-            corpus.append((doc[2], " ".join(doc[0])))
+            corpus.append((doc[2], doc[0]))
 
-    tf = TfidfVectorizer(analyzer='word', ngram_range=(1, 3), min_df=0, stop_words='english', tokenizer=lambda x: x)
+    tf = TfidfVectorizer(analyzer='word', ngram_range=(1, 3), min_df=0, stop_words='english')
     tfidf_matrix = tf.fit_transform([content for file, content in corpus])
     l = len(list(tfidf_matrix))
 
