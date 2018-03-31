@@ -46,6 +46,7 @@ if not_suicidal_as_popular_in_usa:
 else:
     artists = open(not_suicidal_artists_list_file_path, "r").read().split("\n")
 save_songs(artists, not_suicidal_folder_path)
+print("Removing duplicate songs...")
 remove_similar_songs()
 
 

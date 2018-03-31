@@ -1,10 +1,8 @@
 import json
 from flask import Flask, send_from_directory, request, jsonify
 
-import draw_text
 from api_helpers import get_lyrics
 from config import categories
-from data_helpers import tokenize_and_process, pos_tagger
 from draw_text import create_text_diagram
 from model_persistance_helper import get_models_info, find_model
 
@@ -41,7 +39,7 @@ def analyze():
     if lyrics:
             model = find_model(model_name, model_date)
             if model:
-                probabilities = model.predict_proba([tokenize_and_process(lyrics, pos_tagger)])[0]
+                probabilities = model.predict_proba([lyrics])[0]
                 probabilities_with_labels = []
                 for i, proba in enumerate(probabilities):
                     probabilities_with_labels.append(

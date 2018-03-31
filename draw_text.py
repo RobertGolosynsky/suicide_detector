@@ -1,6 +1,5 @@
 from config import *
 from api_helpers import get_lyrics
-from data_helpers import tokenize_and_process, pos_tagger
 from model_persistance_helper import best_model
 from text_draw import TextDraw
 from file_helpers import check_create_folder
@@ -27,7 +26,7 @@ def create_text_diagram(model, lyrics, file_name):
     ngram_length = 5
     grams = ngrams(flat_list, ngram_length)
 
-    grams = [(g, model.predict_proba([tokenize_and_process(" ".join(g), pos_tagger)])[0][0]) for g in grams]
+    grams = [(g, model.predict_proba([" ".join(g)])[0][0]) for g in grams]
 
     k = 0
     for a in lines_splited:

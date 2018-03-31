@@ -17,8 +17,21 @@ def save_text(file_name, text):
         traceback.print_exc()
         return
 
+#
+# def get_documents(category, words_processor):
+#     valid_categories = categories
+#     if category not in valid_categories:
+#         raise ValueError("Category must be one of: {}".format(valid_categories))
+#
+#     documents = []
+#     folder_path = not_suicidal_folder_path if category == not_suicidal_category_name else suicidal_folder_path
+#     for file in glob.glob(os.path.join(folder_path, "*.txt".format(folder_path))):
+#         line = open(file, "r", encoding="utf-8").read()
+#         documents.append((tokenize_and_process(line, words_processor), category, file))
+#     return documents
 
-def get_documents(category, words_processor):
+
+def get_documents(category):
     valid_categories = categories
     if category not in valid_categories:
         raise ValueError("Category must be one of: {}".format(valid_categories))
@@ -27,7 +40,7 @@ def get_documents(category, words_processor):
     folder_path = not_suicidal_folder_path if category == not_suicidal_category_name else suicidal_folder_path
     for file in glob.glob(os.path.join(folder_path, "*.txt".format(folder_path))):
         line = open(file, "r", encoding="utf-8").read()
-        documents.append((tokenize_and_process(line, words_processor), category, file))
+        documents.append((line, category, file))
     return documents
 
 
@@ -36,15 +49,19 @@ def save_plots(y_test, predictions, categories, pipe_name, report):
     save_text(os.path.join(current_checkpoint_directory, "{}.{}".format(pipe_name, report_file_extension)), report)
 
 
-def pos_tagger(words):
+def _pos_tagger(words):
     pos_tagged_words = nltk.pos_tag(words)
     pos_tagged_words = [" ".join(w) for w in pos_tagged_words]
     return pos_tagged_words
 
 
-def tokenize_and_process(line, words_processor):
+def _tokenize_and_process(line, words_processor):
     line = line.lower()
     return words_processor(word_tokenize(line))
+
+def default_tokenizer_and_pos_tagger(line):
+    line = line.lower()
+    return _pos_tagger(word_tokenize(line))
 
 
 def ngrams(input_list, n):

@@ -1,7 +1,7 @@
 from PIL import Image, ImageFont, ImageDraw
 from file_helpers import silent_remove
 from config import *
-from data_helpers import tokenize_and_process, pos_tagger, ngrams
+from data_helpers import ngrams
 from file_helpers import check_create_folder
 from mathe import translate
 
