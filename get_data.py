@@ -41,10 +41,17 @@ artists += open(depressing_bands_list_file_path, "r").read().split("\n")
 save_songs(artists, suicidal_folder_path)
 
 
-artists = get_popular_artists("united%20states")["topartists"]["artist"]
-artists += [a["name"] for a in artists]
-artists += open(not_suicidal_artists_list_file_path, "r").read().split("\n")
-save_songs(artists, not_suicidal_folder_path)
+popular_artists_resp = get_popular_artists("united%20states")["topartists"]["artist"]
+not_suicidal_artists = [a["name"] for a in popular_artists_resp]
+not_suicidal_artists += open(not_suicidal_artists_list_file_path, "r").read().split("\n")
+
+cleaned_not_suicidal_artists = []
+for a in not_suicidal_artists:
+    if a not in artists:
+        cleaned_not_suicidal_artists.append(a)
+
+save_songs(cleaned_not_suicidal_artists, not_suicidal_folder_path)
+print("Removing duplicates...")
 remove_similar_songs()
 
 
