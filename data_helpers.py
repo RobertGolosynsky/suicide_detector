@@ -1,9 +1,7 @@
 import glob
 import traceback
-
 import nltk
 from nltk import word_tokenize
-from nltk.stem.porter import PorterStemmer
 from config import *
 from file_helpers import check_create_folder
 from plots import plot_confusion_matrix
@@ -47,3 +45,7 @@ def pos_tagger(words):
 def tokenize_and_process(line, words_processor):
     line = line.lower()
     return words_processor(word_tokenize(line))
+
+
+def ngrams(input_list, n):
+    return list(zip(*[input_list[i:] for i in range(n)]))
