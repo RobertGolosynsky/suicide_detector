@@ -19,7 +19,7 @@ lxml==4.2.1
 Markdown==2.6.11
 MarkupSafe==1.0
 matplotlib==2.2.2
-nltk==3.2.5
+nltk==3.4.5
 numpy==1.14.2
 pandas==0.22.0
 Pillow==5.0.0
